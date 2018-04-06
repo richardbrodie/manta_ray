@@ -1,5 +1,5 @@
 [package]
-name = "manta_ray-new"
+name = "manta_ray"
 version = "0.1.0"
 authors = ["richard <richard@radagast.nu>"]
 
