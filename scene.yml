@@ -1,0 +1,81 @@
+---
+width: 800
+height: 600
+camera:
+  position:
+    x: 0
+    "y": -2
+    z: 0
+  direction:
+    x: 0
+    "y": 0
+    z: 0
+elements:
+  # - Sphere:
+  #     center:
+  #       x: 0
+  #       "y": 0
+  #       z: -50
+  #     radius: 1
+  #     colour:
+  #       red: 0.2
+  #       green: 1.0
+  #       blue: 0.2
+  #     albedo: 0.18
+  # - Sphere:
+  #     center:
+  #       x: -3.0
+  #       "y": 0.0
+  #       z: 60
+  #     radius: 2.0
+  #     colour:
+  #       red: 0.2
+  #       green: 0.2
+  #       blue: 1.0
+  #     albedo: 0.58
+  - Sphere:
+      center:
+        x: 0
+        "y": 1.0
+        z: -4
+      radius: 1
+      colour:
+        red: 1.0
+        green: 0.2
+        blue: 0.2
+      albedo: 0.18
+  - Plane:
+      origin:
+        x: 0
+        "y": 0
+        z: -10
+      normal:
+        x: 0
+        "y": -10
+        z: 0
+      colour:
+        red: 0.25
+        green: 0.25
+        blue: 0.25
+      albedo: 0.10000000149011612
+lights:
+  - Spherical:
+      position:
+        x: -2.0
+        "y": 10.0
+        z: -3.0
+      colour:
+        red: 1
+        green: 1
+        blue: 1
+      intensity: 10000.0
+  - Directional:
+      direction:
+        x: 0
+        "y": 0
+        z: -1.0
+      colour:
+        red: 1
+        green: 1
+        blue: 1
+      intensity: 1
