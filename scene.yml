@@ -1,81 +1,104 @@
 ---
-width: 800
-height: 600
+width: 3200
+height: 2400
+max_reflections: 4
 camera:
   position:
     x: 0
-    "y": -2
-    z: 0
-  direction:
-    x: 0
-    "y": 0
+    "y": 0.1
     z: 0
 elements:
-  # - Sphere:
-  #     center:
-  #       x: 0
-  #       "y": 0
-  #       z: -50
-  #     radius: 1
-  #     colour:
-  #       red: 0.2
-  #       green: 1.0
-  #       blue: 0.2
-  #     albedo: 0.18
-  # - Sphere:
-  #     center:
-  #       x: -3.0
-  #       "y": 0.0
-  #       z: 60
-  #     radius: 2.0
-  #     colour:
-  #       red: 0.2
-  #       green: 0.2
-  #       blue: 1.0
-  #     albedo: 0.58
-  - Sphere:
+  - Sphere: # green
+      center:
+        x: -1
+        "y": 0
+        z: -3.5
+      radius: 1
+      material:
+        colour:
+          red: 0.2
+          green: 1.0
+          blue: 0.2
+        albedo: 0.18
+        shininess: 780
+        surface:
+          Reflective: 0.1
+  - Sphere: # blue
+      center:
+        x: 1.0
+        "y": 0
+        z: -3.5
+      radius: 1
+      material:
+        colour:
+          red: 0.2
+          green: 0.2
+          blue: 1.0
+        albedo: 0.28
+        shininess: 480
+        surface:
+          Reflective: 0.1
+  - Sphere: # red
       center:
         x: 0
-        "y": 1.0
-        z: -4
+        "y": 1.5
+        z: -3.5
       radius: 1
-      colour:
-        red: 1.0
-        green: 0.2
-        blue: 0.2
-      albedo: 0.18
+      material:
+        colour:
+          red: 1.0
+          green: 0.2
+          blue: 0.2
+        albedo: 0.18
+        shininess: 1780
+        surface:
+          Reflective: 0.1
   - Plane:
       origin:
         x: 0
-        "y": 0
-        z: -10
+        "y": -1.0
+        z: 0
       normal:
         x: 0
-        "y": -10
+        "y": -1
         z: 0
-      colour:
-        red: 0.25
-        green: 0.25
-        blue: 0.25
-      albedo: 0.10000000149011612
+      material:
+        colour:
+          red: 0.25
+          green: 0.25
+          blue: 0.25
+        albedo: 0.10
+        shininess: 220
+        surface:
+          Reflective: 0.05
 lights:
   - Spherical:
       position:
-        x: -2.0
-        "y": 10.0
-        z: -3.0
+        x: -6.0
+        "y": 2.0
+        z: -0.5
       colour:
         red: 1
         green: 1
         blue: 1
-      intensity: 10000.0
+      intensity: 3000.0
+  - Spherical:
+      position:
+        x: 6.0
+        "y": 2.0
+        z: -2.5
+      colour:
+        red: 1
+        green: 1
+        blue: 1
+      intensity: 4000.0
   - Directional:
       direction:
         x: 0
-        "y": 0
-        z: -1.0
+        "y": -5
+        z: -10.0
       colour:
         red: 1
         green: 1
         blue: 1
-      intensity: 1
+      intensity: 2

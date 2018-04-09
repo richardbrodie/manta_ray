@@ -25,7 +25,7 @@ pub enum Light {
 impl Light {
   pub fn direction(&self, p: &Point) -> Vector {
     match *self {
-      Light::Directional(ref d) => -d.direction,
+      Light::Directional(ref d) => -d.direction.normalise(),
       Light::Spherical(ref s) => (&s.position - p).normalise(),
     }
   }

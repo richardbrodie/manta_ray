@@ -4,11 +4,24 @@ use colour::Colour;
 use world::Ray;
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub enum SurfaceType {
+  Diffuse,
+  Reflective(f32),
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct Material {
+  pub colour: Colour,
+  pub albedo: f32,
+  pub surface: SurfaceType,
+  pub shininess: u16,
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct Sphere {
   pub center: Point,
   pub radius: f64,
-  pub colour: Colour,
-  pub albedo: f32,
+  pub material: Material,
 }
 impl Intersectable for Sphere {
   fn intersects(&self, ray: &Ray) -> Option<f64> {
@@ -34,20 +47,13 @@ impl Intersectable for Sphere {
   fn surface_normal(&self, p: &Point) -> Vector {
     return p.normal(&self.center);
   }
-  // fn colour(&self) -> &Colour {
-  //   return &self.colour;
-  // }
-  // fn albedo(&self) -> f32 {
-  //   return self.albedo;
-  // }
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct Plane {
   pub origin: Point,
   pub normal: Vector,
-  pub colour: Colour,
-  pub albedo: f32,
+  pub material: Material,
 }
 impl Intersectable for Plane {
   fn intersects(&self, ray: &Ray) -> Option<f64> {
@@ -64,12 +70,6 @@ impl Intersectable for Plane {
   fn surface_normal(&self, _: &Point) -> Vector {
     return -self.normal;
   }
-  // fn colour(&self) -> &Colour {
-  //   return &self.colour;
-  // }
-  // fn albedo(&self) -> f32 {
-  //   return self.albedo;
-  // }
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
@@ -94,14 +94,26 @@ impl Intersectable for Geometry {
 impl Geometry {
   pub fn colour(&self) -> &Colour {
     match *self {
-      Geometry::Sphere(ref s) => &s.colour,
-      Geometry::Plane(ref p) => &p.colour,
+      Geometry::Sphere(ref s) => &s.material.colour,
+      Geometry::Plane(ref p) => &p.material.colour,
     }
   }
   pub fn albedo(&self) -> f32 {
     match *self {
-      Geometry::Sphere(ref s) => s.albedo,
-      Geometry::Plane(ref p) => p.albedo,
+      Geometry::Sphere(ref s) => s.material.albedo,
+      Geometry::Plane(ref p) => p.material.albedo,
+    }
+  }
+  pub fn surface(&self) -> &SurfaceType {
+    match *self {
+      Geometry::Sphere(ref s) => &s.material.surface,
+      Geometry::Plane(ref p) => &p.material.surface,
+    }
+  }
+  pub fn shininess(&self) -> u16 {
+    match *self {
+      Geometry::Sphere(ref s) => s.material.shininess,
+      Geometry::Plane(ref p) => p.material.shininess,
     }
   }
 }

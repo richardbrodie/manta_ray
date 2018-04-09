@@ -8,9 +8,9 @@ use std::f64;
 pub struct Scene {
   pub width: u32,
   pub height: u32,
+  pub max_reflections: u8,
   pub camera: Camera,
   pub elements: Vec<Geometry>,
-  // pub elements: Vec<&'a Intersectable>,
   pub lights: Vec<Light>,
 }
 impl Scene {
@@ -26,10 +26,9 @@ impl Scene {
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct Camera {
   pub position: Point,
-  pub direction: Vector,
 }
 impl Camera {
-  pub fn create_prime(&self, x: u32, y: u32, scene: &Scene) -> Ray {
+  pub fn create_prime<'a>(&self, x: u32, y: u32, scene: &Scene) -> Ray {
     let fov = (90f64.to_radians() / 2.0).tan();
     let aspect_ratio = (scene.width as f64) / (scene.height as f64);
     let sensor_x = (((x as f64 + 0.5) / scene.width as f64) * 2.0 - 1.0) * aspect_ratio * fov;

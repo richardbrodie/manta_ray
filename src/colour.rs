@@ -17,6 +17,13 @@ impl Colour {
       255,
     )
   }
+  pub fn black() -> Colour {
+    return Colour {
+      red: 0.0,
+      green: 0.0,
+      blue: 0.0,
+    };
+  }
 }
 impl<'a, 'b> Mul<&'b Colour> for &'a Colour {
   type Output = Colour;
@@ -48,6 +55,16 @@ impl Mul<f32> for Colour {
     }
   }
 }
+impl<'a> Mul<f32> for &'a Colour {
+  type Output = Colour;
+  fn mul(self, op: f32) -> Colour {
+    Colour {
+      red: self.red * op,
+      green: self.green * op,
+      blue: self.blue * op,
+    }
+  }
+}
 impl Add for Colour {
   type Output = Colour;
   fn add(self, rhs: Colour) -> Colour {
@@ -55,6 +72,16 @@ impl Add for Colour {
       red: self.red + rhs.red,
       green: self.green + rhs.green,
       blue: self.blue + rhs.blue,
+    }
+  }
+}
+impl Add<f32> for Colour {
+  type Output = Colour;
+  fn add(self, rhs: f32) -> Colour {
+    Colour {
+      red: self.red + rhs,
+      green: self.green + rhs,
+      blue: self.blue + rhs,
     }
   }
 }
