@@ -1,19 +1,19 @@
 ---
 width: 3200
 height: 2400
-max_reflections: 4
+max_reflections: 3
 camera:
   position:
     x: 0
-    "y": 0.1
+    "y": 0.5
     z: 0
 elements:
   - Sphere: # green
       center:
-        x: -1
-        "y": 0
-        z: -3.5
-      radius: 1
+        x: -2
+        "y": 1.0
+        z: -15.5
+      radius: 2
       material:
         colour:
           red: 0.2
@@ -25,10 +25,10 @@ elements:
           Reflective: 0.1
   - Sphere: # blue
       center:
-        x: 1.0
-        "y": 0
-        z: -3.5
-      radius: 1
+        x: 2.0
+        "y": 1.0
+        z: -15.5
+      radius: 2
       material:
         colour:
           red: 0.2
@@ -41,9 +41,9 @@ elements:
   - Sphere: # red
       center:
         x: 0
-        "y": 1.5
-        z: -3.5
-      radius: 1
+        "y": 4.5
+        z: -15.5
+      radius: 2
       material:
         colour:
           red: 1.0
@@ -74,31 +74,31 @@ elements:
 lights:
   - Spherical:
       position:
-        x: -6.0
-        "y": 2.0
+        x: -16.0
+        "y": 5.0
         z: -0.5
       colour:
         red: 1
         green: 1
         blue: 1
-      intensity: 3000.0
+      intensity: 10000.0
   - Spherical:
       position:
-        x: 6.0
-        "y": 2.0
+        x: 16.0
+        "y": 5.0
         z: -2.5
       colour:
         red: 1
         green: 1
         blue: 1
-      intensity: 4000.0
+      intensity: 50000.0
   - Directional:
       direction:
         x: 0
-        "y": -5
+        "y": -15
         z: -10.0
       colour:
         red: 1
         green: 1
         blue: 1
-      intensity: 2
+      intensity: 4

@@ -29,7 +29,7 @@ pub struct Camera {
 }
 impl Camera {
   pub fn create_prime<'a>(&self, x: u32, y: u32, scene: &Scene) -> Ray {
-    let fov = (90f64.to_radians() / 2.0).tan();
+    let fov = (45f64.to_radians() / 2.0).tan();
     let aspect_ratio = (scene.width as f64) / (scene.height as f64);
     let sensor_x = (((x as f64 + 0.5) / scene.width as f64) * 2.0 - 1.0) * aspect_ratio * fov;
     let sensor_y = 1.0 - ((y as f64 + 0.5) / scene.height as f64) * 2.0 * fov;
